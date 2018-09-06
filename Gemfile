@@ -28,3 +28,6 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
 end
+
+# Secrets should never be stored in code
+gem 'dotenv-rails', require: 'dotenv/rails-now', group: [:development, :test]

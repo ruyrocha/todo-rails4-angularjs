@@ -6,7 +6,7 @@ RUN apt update && \
   libffi-dev libyaml-dev libgdbm-dev libreadline-dev libmysqlclient-dev \
   apt-utils libpq-dev ncurses-dev sqlite3 libsqlite3-dev \
   silversearcher-ag screen cron tzdata dash chromium-chromedriver \
-  libssl1.0-dev nodejs
+  libssl1.0-dev nodejs sudo
 
 # Set default local time
 ENV TZ America/Sao_Paulo
@@ -20,7 +20,8 @@ RUN echo "dash    dash/sh boolean false" | debconf-set-selections && \
 RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 99
 
 # Add `deploy` user
-RUN useradd -m deploy && echo "deploy:deploy" | chpasswd
+RUN useradd -m deploy && echo "deploy:deploy" | chpasswd && adduser docker sudo
+RUN sed -i -e '/\%sudo/s/.*/\%sudo ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
 
 USER deploy
 # Install rbenv

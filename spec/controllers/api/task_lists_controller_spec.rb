@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::TaskListsController do
+describe Api::TaskListsController, type: :controller do
   context "for user that has two task lists" do
     let(:user) { create(:user) }
     let(:first_list) { user.first_list }
@@ -11,7 +11,7 @@ describe Api::TaskListsController do
       create(:task_list, owner: user)
     end
 
-    describe "#index" do    
+    describe "#index" do
       context "when authenticated as that user" do
         before { sign_in(user) }
 
@@ -27,7 +27,7 @@ describe Api::TaskListsController do
           get :index, format: :json
           response.status.should == 401
           json_response.should == {'error' => 'You need to sign in or sign up before continuing.'}
-        end      
+        end
       end
     end
 
@@ -52,8 +52,8 @@ describe Api::TaskListsController do
 
         it "should return json of the just created record" do
           post_create
-          json_response["id"].should == be_an(Integer)
-          json_response["name"].should == "My new list"          
+          json_response["id"].should be_an(Integer)
+          json_response["name"].should == "My new list"
         end
 
         it "should raise ParameterMissing exception when task param is missing" do
@@ -71,7 +71,7 @@ describe Api::TaskListsController do
       context "when not authenticated as that user" do
         it "should return HTTP 401 Unauthorized when trying to create a list" do
           post_create
-          response.status.should == 401          
+          response.status.should == 401
           json_response.should == {'error' => 'You need to sign in or sign up before continuing.'}
         end
       end
@@ -81,13 +81,13 @@ describe Api::TaskListsController do
       let(:patch_update) do
         patch :update, id: first_list.id, list: {name: "Updated list"}, format: :json
       end
-      
+
       context "when authenticated as that user" do
-        before { sign_in(user) }      
-        
+        before { sign_in(user) }
+
         it "should update passed parameters of the given list" do
           patch_update
-          first_list.reload.name.should == "Updated list"          
+          first_list.reload.name.should == "Updated list"
         end
 
         it "should return 200 OK" do
@@ -114,8 +114,8 @@ describe Api::TaskListsController do
           patch :update, id: first_list.id, format: :json
           response.status.should == 401
           json_response.should == {'error' => 'You need to sign in or sign up before continuing.'}
-        end      
-      end   
+        end
+      end
     end
 
     describe "#show" do
@@ -138,15 +138,15 @@ describe Api::TaskListsController do
           response.status.should == 401
           json_response.should == {'error' => 'unauthorized'}
         end
-      end  
+      end
 
       context "when not authenticated as that user" do
         it "should return error json with 401 HTTP status" do
           get :show, id: first_list.id, format: :json
           response.status.should == 401
           json_response.should == {'error' => 'You need to sign in or sign up before continuing.'}
-        end      
-      end    
+        end
+      end
     end
 
     describe "#destroy" do
@@ -156,8 +156,8 @@ describe Api::TaskListsController do
 
       context "when authenticated as that user" do
         before { sign_in(user) }
-      
-        it "should remove a list from the database" do        
+
+        it "should remove a list from the database" do
           delete_destroy
           expect { second_list.reload }.to raise_error(ActiveRecord::RecordNotFound)
         end
@@ -185,8 +185,8 @@ describe Api::TaskListsController do
           delete :destroy, id: second_list.id, format: :json
           response.status.should == 401
           json_response.should == {'error' => 'You need to sign in or sign up before continuing.'}
-        end      
-      end 
+        end
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'API auth' do
+describe 'API auth', type: :request do
   include JsonApiHelpers
 
   before do

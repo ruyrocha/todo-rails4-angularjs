@@ -28,6 +28,7 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 # Secrets should never be stored in code

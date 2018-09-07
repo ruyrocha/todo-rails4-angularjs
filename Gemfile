@@ -31,3 +31,5 @@ end
 
 # Secrets should never be stored in code
 gem 'dotenv-rails', require: 'dotenv/rails-now', group: [:development, :test]
+
+gem 'omniauth-google-oauth2'

@@ -15,7 +15,7 @@
     div.panel-heading     
       editablespan(model="list.name" on-ready="listNameEdited(list.name)" input-class="form-control" span-class="list-name")
 
-    a.fb-button__link(href="#" target="_blank" aria-label="Facebook")
+    a.fb-button__link(href="https://facebook.com/sharer/sharer.php?u={{fullUrl}}" target="_blank" aria-label="Facebook")
       div.fb-button.fb-button--facebook.fb-button-medium
         div.fb-button__icon.fb-button__icon--solid(aria-hidden="true")
           svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24")

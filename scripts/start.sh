@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 echo "Dropping databases..."
-#bundle exec rake db:drop
+bundle exec rake db:drop
 echo "Creating databases..."
-#bundle exec rake db:create
+bundle exec rake db:create
 echo "Migrating..."
 bundle exec rake db:migrate
 echo "Seeding..."

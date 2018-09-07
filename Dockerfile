@@ -20,7 +20,7 @@ RUN echo "dash    dash/sh boolean false" | debconf-set-selections && \
 RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 99
 
 # Add `deploy` user
-RUN useradd -m deploy && echo "deploy:deploy" | chpasswd && adduser docker sudo
+RUN useradd -m deploy && echo "deploy:deploy" | chpasswd && adduser deploy sudo
 RUN sed -i -e '/\%sudo/s/.*/\%sudo ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
 
 USER deploy

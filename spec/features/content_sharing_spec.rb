@@ -1,16 +1,14 @@
 require 'spec_helper'
 
-RSpec.feature "sharing task lists" do
+describe "content sharing", type: :feature, js: true do
   let(:user) { create(:user) }
   let(:task_list) { create(:task_list, owner: user) }
 
-  before do
-    login_as(user, scope: :user)
-  end
+  it "shows FB share button when checking task list page", js: true do
+    login_as user, scope: :user
 
-  scenario "via Facebook button" do
-    visit "/"
     visit "/task_lists/#{task_list.id}"
-    expect(page).to have_content("Remember me")
+
+    expect(page).to have_css("div.fb-button--facebook")
   end
 end

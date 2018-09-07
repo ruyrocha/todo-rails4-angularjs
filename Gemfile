@@ -28,6 +28,8 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'database_cleaner'
 end
 

@@ -37,3 +37,4 @@ end
 gem 'dotenv-rails', require: 'dotenv/rails-now', group: [:development, :test]
 
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'

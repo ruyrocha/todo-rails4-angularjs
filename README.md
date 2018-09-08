@@ -15,6 +15,8 @@ After cloning this repo locally, create your `.env` file as follows:
 POSTGRES_PASSWORD=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+FACEBOOK_CLIENT_ID=
+FACEBOOK_CLIENT_SECRET=
 ```
 
 The PostgreSQL is your choice, and the Google client details can be obtained as [described here](https://github.com/zquestz/omniauth-google-oauth2#google-api-setup).

@@ -1,0 +1,61 @@
+.fb-button__link,
+.fb-button__icon {
+  display: inline-block
+}
+
+.fb-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+
+.fb-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.fb-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.fb-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+/* Non solid icons get a stroke */
+.fb-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+/* Solid icons get a fill */
+.fb-button__icon--solid,
+.fb-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.fb-button--facebook {
+  background-color: #3b5998
+}
+
+.fb-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.fb-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.fb-button--facebook:hover,
+.fb-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}

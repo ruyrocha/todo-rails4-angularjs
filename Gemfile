@@ -27,4 +27,14 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
 end
+
+# Secrets should never be stored in code
+gem 'dotenv-rails', require: 'dotenv/rails-now', group: [:development, :test]
+
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'

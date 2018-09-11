@@ -8,6 +8,8 @@ angular.module('todoApp').controller "TodoListController", ($scope, $timeout, $r
 
     $scope.list = @listService.find $routeParams.list_id
 
+    $scope.fullUrl = 'http://localhost:3000/task_lists/' + $routeParams.list_id
+
   $scope.addTask = ->
     raisePriorities()
     task = @taskService.create(description: $scope.taskDescription)
@@ -55,7 +57,7 @@ angular.module('todoApp').controller "TodoListController", ($scope, $timeout, $r
 
   $scope.dueDateNullLast = (task) ->
     task.due_date ? '2999-12-31'
-
+  
   serverErrorHandler = ->
     alert("There was a server error, please reload the page and try again.")
 

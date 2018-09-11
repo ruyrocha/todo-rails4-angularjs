@@ -1,12 +1,10 @@
 require 'spec_helper'
 
-describe TemplatesController do
-  
+describe TemplatesController, type: :controller do
   describe "#index" do
-
     context "when logged in" do
       before { sign_in(create(:user)) }
-      
+
       it "should return 200 for the index" do
         get :index
         response.should be_ok
@@ -19,7 +17,6 @@ describe TemplatesController do
     end
 
     context "when not logged in" do
-      
       it "should redirect to sign up for the index" do
         get :index
         response.should redirect_to(new_user_session_path)
@@ -30,6 +27,5 @@ describe TemplatesController do
         response.should redirect_to(new_user_session_path)
       end
     end
-
   end
 end
